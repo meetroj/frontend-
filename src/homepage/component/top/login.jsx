@@ -14,23 +14,25 @@ function Login({api}) {
 async function handleSubmit(e) {
   e.preventDefault();
 
-const cleanApi = api.replace(/\/+$/, "");
-const res = await fetch(`${cleanApi}/api/auth/login`, {
-
-
+  const cleanApi = api.replace(/\/+$/, "");
+  const res = await fetch(`${cleanApi}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
   });
 
-  const data = await res.json();
+  let data;
+  try {
+    data = await res.json();
+  } catch {
+    data = null;
+  }
 
-if (!res.ok) {
-  const text = await res.text();
-  console.log("Server error:", text);
-  alert("Login failed");
-  return;
-}
+  if (!res.ok) {
+    console.log("Backend error:", data);
+    alert(data?.message || "Login failed");
+    return;
+  }
 
   localStorage.setItem("token", data.token);
   navigate("/welcome");
