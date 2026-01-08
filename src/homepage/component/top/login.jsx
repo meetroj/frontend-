@@ -14,7 +14,8 @@ function Login({api}) {
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const res = await fetch(`${api}/api/auth/login`, {
+ const res = await fetch(`${api.replace(/\/$/, "")}/api/auth/login`, {
+
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
