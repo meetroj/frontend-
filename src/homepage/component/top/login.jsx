@@ -22,12 +22,12 @@ async function handleSubmit(e) {
 
   const data = await res.json();
 
-  if (!res.ok) {
-    alert(data.message || "Login failed");
-
-    return;
-  }
-
+if (!res.ok) {
+  const text = await res.text();
+  console.log("Server error:", text);
+  alert("Login failed");
+  return;
+}
 
   localStorage.setItem("token", data.token);
   navigate("/welcome");
