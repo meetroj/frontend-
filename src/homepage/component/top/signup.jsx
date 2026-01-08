@@ -21,7 +21,7 @@ console.log("HANDLE SUBMIT FIRED");
 
 
 
-  const res = await fetch(`${cleanApi}/api/auth/signup`, {
+  const res = await fetch(`${cleanApi}/api/auth/signup `, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password })
