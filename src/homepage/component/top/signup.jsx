@@ -14,7 +14,9 @@
 
 async function handleSubmit(e) {
   e.preventDefault();
+
 console.log("HANDLE SUBMIT FIRED");
+
   const cleanApi = API.replace(/\/+$/, "");
 
   const res = await fetch(`${cleanApi}/api/auth/signup`, {
@@ -23,18 +25,24 @@ console.log("HANDLE SUBMIT FIRED");
     body: JSON.stringify({ name, email, password })
   });
 
-  const data = await res.json();
 
-  if (res.status === 200 || res.status === 201) {
-    console.log("Signup success:", data);
-    setTimeout(() => {
-      navigate("/welcome");
-    }, 300);
-  } else {
-    alert(data.message || "Signup failed");
+
+   let data;
+  try {
+    data = await res.json();
+  } catch {
+    data = null;
   }
-}
 
+  if (!res.ok) {
+    console.log("Backend error:", data);
+    alert(data?.message || "Signup failed");
+    return;
+  }
+
+  localStorage.setItem("token", data.token);
+  navigate("/welcome");
+}
 
     return (
   <div className="h-screen w-screen flex items-center justify-center  bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700">
