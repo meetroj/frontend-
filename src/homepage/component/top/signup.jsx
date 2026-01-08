@@ -17,7 +17,8 @@ async function handleSubmit(e) {
 
 console.log("HANDLE SUBMIT FIRED");
 
-  const cleanApi = API.split("/").filter(Boolean).join("/");
+  const cleanApi = API.endsWith("/") ? API.slice(0, -1) : API;
+
 
 
   const res = await fetch(`${cleanApi}/api/auth/signup`, {

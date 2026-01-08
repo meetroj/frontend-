@@ -15,7 +15,7 @@ function Login({api}) {
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const cleanApi = API.replace(/\/+$/, "");
+  const cleanApi = API.endsWith("/") ? API.slice(0, -1) : API;
 
   const res = await fetch(`${cleanApi}/api/auth/login`, {
     method: "POST",
