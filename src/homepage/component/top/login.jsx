@@ -95,7 +95,7 @@ async function handleSubmit(e) {
     type="submit"
     className="w-full py-2 rounded-full bg-gradient-to-br from-cyan-400 via-sky-500 to-blue-700 text-white font-semibold hover:opacity-90 transition"
   >
-    SignUp
+    Login
   </button>
     <div className="flex justify-between">
     <p>Don't have an account?</p>
