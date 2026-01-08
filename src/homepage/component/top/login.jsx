@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
@@ -10,11 +10,13 @@ function Login({api}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const API = import.meta.env.VITE_API_URL;
 
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const cleanApi = api.replace(/\/+$/, "");
+  const cleanApi = API.replace(/\/+$/, "");
+
   const res = await fetch(`${cleanApi}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

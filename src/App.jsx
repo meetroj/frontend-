@@ -12,7 +12,7 @@ import Trial from "./homepage/component/bottom/trial"
 import Premium from "./homepage/component/bottom/premium"
 import Welcome from "./homepage/nextpage/welcome"
 
-const API = "https://backend-vqfb.onrender.com";
+const API = import.meta.env.VITE_API_URL;
 
 
 
