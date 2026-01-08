@@ -12,53 +12,56 @@ import Trial from "./homepage/component/bottom/trial"
 import Premium from "./homepage/component/bottom/premium"
 import Welcome from "./homepage/nextpage/welcome"
 
+const API = "https://backend-vqfb.onrender.com/";
+
+
 
 const router= createBrowserRouter([
   {
     path:"/",
-    element: <Home/>
+    element: <Home api={API}/>
 
 
   },
   {
     path:"/homee",
-    element: <Homee/>
+    element: <Homee api={API}/>
 
 
   },
   {
     path:"/products",
-    element:<Products/>
+    element:<Products api={API}/>
 
   },
   {
     path:"/contactus",
-    element:<Contactus/>
+    element:<Contactus api={API}/>
 
   },
   {
     path:"/login",
-    element:<Login/>
+    element:<Login api={API}/>
 
   },
   {
     path:"/signup",
-    element:<Signup/>
+    element:<Signup api={API}/>
 
   },
   {
     path:"/trial",
-    element:<Trial/>
+    element:<Trial api={API}/>
 
   },
   {
     path:"/premium",
-    element:<Premium/>
+    element:<Premium api={API}/>
 
   },
   {
     path:"/welcome",
-    element:<Welcome/>
+    element:<Welcome api={API}/>
 
   }
 ])

@@ -4,7 +4,7 @@
   import { useNavigate } from "react-router-dom";
 
 
-  function Signup() {
+  function Signup({api}) {
     const navigate=useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,11 +16,11 @@ async function handleSubmit(e) {
   e.preventDefault();
 console.log("HANDLE SUBMIT FIRED");
 
-  const res = await fetch("http://localhost:5000/api/auth/signup", {
+  const res = await fetch(`${api}/api/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, email, password })
-  }); 
+  });
 
   const data = await res.json();
 
